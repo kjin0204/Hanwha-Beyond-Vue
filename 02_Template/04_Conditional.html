@@ -37,6 +37,18 @@
         <h1 v-else>Oh no!</h1>
         <button @click="setToggle">toggle</button>
      </div>
+
+     <div id="step04">
+        <!-- 
+            template 태그는 실제 DOM 요소로 해석되지 않고 요소의 범위를
+            지정하기 위한 용도로 쓸 수 있다.
+        -->
+        <template v-if="isTrue">
+            <h1>awesome</h1>
+            <h2>good</h2>
+        </template>
+     </div>
+
     <script>
         const {createApp, ref, reactive} = Vue;
 
@@ -86,6 +98,15 @@
                 }
             }
         }).mount('#step03');
+
+        createApp({
+            setup(){
+                const isTrue = ref(true);
+                return{
+                    isTrue
+                }
+            }
+        }).mount('#step04');
     </script>
 </body>
 </html>
