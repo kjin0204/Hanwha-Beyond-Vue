@@ -98,14 +98,13 @@
                         <button @click="likeWine(wine.id)" v-if ="!likes.includes(wine.id)">like</button>
                         <button @click="hateWine(wine.id)" v-if ="likes.includes(wine.id)">hate</button>
                     </div>
-                </template v-else>
+                </template>
+                <template v-else>
                 <!-- 담기 완료(쇼핑 완료) -->
                     <div class="wine-card" v-for="wine in totalLikes" :key="wine.id">
                         <p>{{ wine.wine }}</p>
                         <img class="image" :src="wine.image" alt="와인 이미지">
                     </div>
-                <template>
-
                 </template>
             </div>
         </template>
@@ -162,14 +161,6 @@
                     state.next = state.wines.length;
                     state.pageWine = state.wines.slice(state.index, state.next)
                 }
-
-                // if (state.next + 10 < state.wines.length){
-                //     state.index += 10;
-                //     state.next += 10;
-                //     state.pageWine = state.wines.slice(state.index, state.next)
-                // } else  {
-                //     state.pageWine = state.wines.slice(state.index, state.wines.length)
-                // }
             }
 
             const likeWine = (id) =>  {
@@ -186,7 +177,6 @@
             const toggleViewingState = () => {
                 state.viewingState = !state.viewingState;
                 if(state.viewingState){
-                    // state.totalLikes = state.likes.filter((item) => state.wines.includes((wine) => wine.id == item));
                     state.totalLikes = state.wines.filter((wine) => state.likes.includes(wine.id));
                 }
             }
@@ -194,13 +184,11 @@
             onMounted(async () => {
                 console.log('DOM이 Mount 된 후....');
                 await fetchWines();
-
                 state.lodingState = false;  
                 state.isMounted = true;     
-                
-                console.log('api 통신 후....');
             })
 
+            /* state가 관리중인 객체의 각 프로퍼티를 뜯어서(스프레드 연산자를 사용) 각각 ref로 관리되게 한 후 다시 객체로 만들어 반환 */
             return {...toRefs(state), goBack, goNext, toggleViewingState, likeWine, hateWine};
         }
 
@@ -208,7 +196,6 @@
             setup() {
                 /* useWindes가 반환한 객체의 각 ref들을 뽑아 객체 구조 분해 할당 */
                 const {lodingState, isMounted, 
-                    
                     wines,
                     pageWine,
                     index,
