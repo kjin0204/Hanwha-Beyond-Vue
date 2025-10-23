@@ -2,6 +2,8 @@
     <div>
         <h3>전달 받은 proprs: {{ props.message }} {{ props.count }}</h3>
     </div>
+    <br>
+    <!-- <button @click="test123"></button> -->
 </template>
 
 <script setup>
@@ -23,6 +25,8 @@
     //     value: [String, Number],
     //     data: [Array, Object]
     // });
+    // const test123 = () => {props.message = '123'}
+
     import {defineProps} from 'vue'
     const props = defineProps({
         message : String,
