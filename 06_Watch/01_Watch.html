@@ -30,6 +30,7 @@
         <button @click="y++;">y++</button>
         <button @click="z++;">z++</button>
     </div>
+
     <script>
         const {createApp, ref, reactive, watch} = Vue;
 
@@ -44,6 +45,9 @@
             2. callback: 변경 감지 시 수행할 동작
             3. newVal: 현재 입력된 새로운 값
             4. oldVal: 변경 이전의 값
+
+            첫 번째 인수: 감시대상, 감시대상을 활용하는 콜백함수
+            두 번째 인수: 감시대상이 변하면 실행되는 콜백함수
         */
         createApp({
             setup(){
@@ -68,7 +72,6 @@
             }
         }).mount('#step01');
 
-        
         createApp({
             setup(){
                 const x = ref(0);
@@ -84,6 +87,7 @@
 
                     (실제 활용시 자주 첫번째 콜백 함수가 한번 자동실행되는 것을 활용하는 편이다.) watchEffect
                 */
+
                 // watch(() => {
                 //     console.log('실행되나');
                 //     return x.value + y.value;
@@ -92,9 +96,13 @@
                 //     sum.value = result;
                 // });
 
-                watch([x,y], (newvalue, oldvalue) => {
-                    console.log(newvalue,oldvalue);
-                    console.log(newvalue[1],oldvalue[0]);
+
+                /* x, y, z 반응형 변수들 중에 어느 하나라도 변화가 새기면 콜백 함수 실행 */
+                watch([x, y, z], (newVal, oldVal) => {
+                    console.log('newVal:', newVal);
+                    console.log('oldVal:', oldVal);
+
+                    sum.value = x.value + y.value + z.value;
                 })
 
                 return{
