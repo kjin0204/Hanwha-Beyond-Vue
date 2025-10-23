@@ -7,6 +7,7 @@
   import MyComponent from '@/components/01_componet/MyComponent.vue';
   import SlotParent from '@/components/02_slotintro/SlotParent.vue';
   import NamedParent from './components/03_namedslot/NamedParent.vue';
+  import DynamicParent from './components/04_dynamicslot/DynamicParent.vue';
 
 </script>
     
@@ -19,6 +20,7 @@
   <main>
     <SlotParent></SlotParent>
     <NamedParent></NamedParent>
+    <DynamicParent></DynamicParent>
   </main>
 
 </template>
