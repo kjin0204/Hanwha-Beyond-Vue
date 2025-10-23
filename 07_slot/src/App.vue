@@ -6,6 +6,8 @@
   // 절대 경로 (src 경로 부터 시작 @ <- src 위치 가 됨)
   import MyComponent from '@/components/01_componet/MyComponent.vue';
   import SlotParent from '@/components/02_slotintro/SlotParent.vue';
+  import NamedParent from './components/03_namedslot/NamedParent.vue';
+
 </script>
     
 <template>
@@ -16,6 +18,7 @@
   </header>
   <main>
     <SlotParent></SlotParent>
+    <NamedParent></NamedParent>
   </main>
 
 </template>
