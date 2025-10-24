@@ -27,7 +27,7 @@
     </nav>
   </header>
   <main>
-    <RouterView/>
+    <RouterView/> <!--link된 component가 그려지는 위치-->
   </main>
 </template>
 
