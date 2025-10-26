@@ -14,6 +14,7 @@
         readValue: String
     })
     const test = ref(props.readValue);
+    
 </script>
 
 <style scoped>
