@@ -1,6 +1,4 @@
-// router 설정을 위한 함수 할당
-import {createRouter, createWebHashHistory} from 'vue-router';
-// page로 사용 할 컴포넌트
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 import HomeView from '@/views/01_router/HomeView.vue';
 import PathVariable from '@/views/01_router/PathVariable.vue';
 import QueryString from '@/views/01_router/QueryString.vue';
@@ -10,14 +8,16 @@ path: client 요청 경로
 compnet: 맵핑할 컴포넌트
 */
 const router = createRouter({
-    history: createWebHashHistory(),
+    // history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/',
             component: HomeView
         },
         {
-            path: '/pathvariable/:id', // :id(숫자로 들어오는 pathValue 맵핑)
+            /* pathvariable 형태의 라우팅은 경로상의 값을 받아줄 변수를 작성하는 형태로 설정해야 한다. */
+            path: '/pathvariable/:id',
             component: PathVariable
         },
         {
